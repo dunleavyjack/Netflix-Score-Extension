@@ -28,8 +28,8 @@ async function scoreFinder(){
         }
     }
 }
-
 pageChecker();
+
 
 // Check for clicks on sliding elements
 function pageChecker(){
