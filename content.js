@@ -1,7 +1,7 @@
 console.log('Ready to find scores!'); 
 chrome.runtime.onMessage.addListener(scoreFinder);
 
-// Main function for handeling all title cards
+// Main function for handeling all title cards on Netflix homepage
 async function scoreFinder(){
     var titleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7")
     for(var i = 0; i <= titleCards.length; i++){
