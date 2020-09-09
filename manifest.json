@@ -6,7 +6,10 @@
 "web_accessible_resources" : [
     "images/icon.png",
     "images/imdb_logo_color.png",
-    "images/rt_logo_color.png"
+    "images/rt_logo_bw.png",
+    "images/imdb_logo_bw.png",
+    "images/rt_logo_color.png",
+    "css/style.css"
 ],
 "background": {
     "scripts": ["background.js"]
@@ -30,7 +33,12 @@
 ], 
 "js" : [
     "jquery-3.5.1.min.js",
-    "content.js"]
+    "content.js"
+],
+"css" : [
+    "css/style.css"
+]
+
 }
 ]
 }

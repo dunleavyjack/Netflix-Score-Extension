@@ -59,14 +59,19 @@ function parentNodeChecker(uncheckedNode){
 // Add a child element to all title cards
 function buildDiv(parentNodeUnchecked, score1, score2){
     if (parentNodeChecker(parentNodeUnchecked) == true){
-        var imdbLogo = 'images/imdb_logo_color.png'
-        var rtLogo = 'images/rt_logo_color.png'
+        var imdbLogo = chrome.extension.getURL('images/imdb_logo_color.png')
+        var rtLogo = chrome.extension.getURL('images/rt_logo_color.png')
         var div = parent.document.createElement("div");
         div.id = "score-presentation"
-        div.style.marginTop = "3px"
+        // Template literals
         div.innerHTML = `
-            <img src=${imdbLogo}>${score1}<img src=${rtLogo}>${score2}
+            <img src=${imdbLogo} id="logos"><span id="score-area">${score1}</span><img src=${rtLogo} id="logos"><span id="score-area">${score2}</span>
         `;
+        var span = document.getElementById("score-area")
+        //span.style.paddingLeft ="10px";
+        //span.style.paddingRight = "10px";
+        //span.style.paddingBottom = "7px";
+        //span.style.fontSize = "10px";
         parentNodeUnchecked.appendChild(div);
         //div.innerText = score1 + " on IMDb" + "  |  " + score2 + " on Rotten Tomatoes";
     }

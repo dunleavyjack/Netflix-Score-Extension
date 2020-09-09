@@ -1,0 +1,15 @@
+#score-presentation {
+    padding-top: 2px;
+}
+
+#logos {
+    vertical-align: middle;
+}
+
+#score-area {
+    padding-right: 7px;
+    padding-left: 7px;
+    font-size: medium;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+}
