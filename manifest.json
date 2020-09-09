@@ -4,7 +4,9 @@
 "version": "1.0",
 "description": "",
 "web_accessible_resources" : [
-    "images/icon.png"
+    "images/icon.png",
+    "images/imdb_logo_color.png",
+    "images/rt_logo_color.png"
 ],
 "background": {
     "scripts": ["background.js"]
