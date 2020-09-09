@@ -3,8 +3,12 @@ chrome.runtime.onMessage.addListener(scoreFinder);
 
 // Main function for handeling all title cards on Netflix homepage
 async function scoreFinder(){
+    var clicks = 0;
     var titleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7")
     for(var i = 0; i <= titleCards.length; i++){
+        document.addEventListener('click', function(){
+            clicks++;
+        });
         var slider = titleCards[i]
         // Catch Netlix loading error
         try{
@@ -26,22 +30,25 @@ async function scoreFinder(){
         catch(err){
             continue;
         }
+        if (clicks > 0){
+            scoreFinder();
+        }
     }
 }
-pageChecker();
+
 
 
 // Check for clicks on sliding elements
-function pageChecker(){
-    document.addEventListener('click', function(){
-        console.log('Click Detected')
-        scoreFinder();
-    });
-    document.addEventListener('scroll', function(){
-        console.log('Scroll Detected')
-        scoreFinder();
-    });
-}
+//function pageChecker(){
+//    document.addEventListener('click', function(){
+//        console.log('Click Detected')
+//        scoreFinder();
+//    });
+//    document.addEventListener('scroll', function(){
+//        console.log('Scroll Detected')
+//        scoreFinder();
+//    });
+//}
 
 
 // Check for repeated title cards and omit ones with a progress bar
@@ -68,12 +75,7 @@ function buildDiv(parentNodeUnchecked, score1, score2){
             <img src=${imdbLogo} id="logos"><span id="score-area">${score1}</span><img src=${rtLogo} id="logos"><span id="score-area">${score2}</span>
         `;
         var span = document.getElementById("score-area")
-        //span.style.paddingLeft ="10px";
-        //span.style.paddingRight = "10px";
-        //span.style.paddingBottom = "7px";
-        //span.style.fontSize = "10px";
         parentNodeUnchecked.appendChild(div);
-        //div.innerText = score1 + " on IMDb" + "  |  " + score2 + " on Rotten Tomatoes";
     }
 }
 
