@@ -2,11 +2,12 @@
 "manifest_version": 2,
 "name": "Score Puppy",
 "version": "1.1",
-"description": "",
+"description": "IMDb and Rotten Tomatoes scores added right to your Netflix. Woof.",
 "web_accessible_resources" : [
     "images/score_puppy_cropped.png",
     "images/imdb_logo_color.png",
     "images/rt_logo_bw.png",
+    "images/arfy.png",
     "images/imdb_logo_bw.png",
     "images/rt_logo_color.png",
     "css/style.css"
@@ -15,16 +16,16 @@
     "scripts": ["background.js"]
 },
 "browser_action" : { 
-    "default_icon" : "images/score_puppy_cropped.png"
+    "default_icon" : "images/arfy.png"
 },
 "permissions": [
     "https://www.omdbapi.com/*"
 ],
 "icons": {
-    "16": "images/score_puppy_cropped.png",
-    "32": "images/score_puppy_cropped.png",
-    "48": "images/score_puppy_cropped.png",
-    "128": "images/score_puppy_cropped.png"
+    "16": "images/arfy.png",
+    "32": "images/arfy.png",
+    "48": "images/arfy.png",
+    "128": "images/arfy.png"
 },
 "content_scripts" : [
 { 
