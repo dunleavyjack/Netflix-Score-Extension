@@ -3,52 +3,43 @@ chrome.runtime.onMessage.addListener(scoreFinder);
 
 // Main function for handeling all title cards on Netflix homepage
 async function scoreFinder(){
-    var clicks = 0;
-    var titleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7")
-    for(var i = 0; i <= titleCards.length; i++){
-        document.addEventListener('click', function(){
-            clicks++;
-        });
-        var slider = titleCards[i]
-        // Catch Netlix loading error
-        try{
-            var movieTitle = slider.getElementsByClassName("fallback-text")[0].innerText;
-            var movieTitleFormatted = formatTitle(movieTitle);
-            let fetchedData = await fetchRequest(movieTitleFormatted);
-            // Catch 'Movie not on database' error
+    var totalTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
+    for(var i = 0; i <= totalTitleCards.length; i++){
+        for(var j = 0; j<=i; j++){
+            var presentTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
+            var slider = presentTitleCards[j]
             try{
-                let imdbScore = imdbFormating(fetchedData.Ratings[0].Value);
-                let rtScore = rtFormating(fetchedData.Ratings[1].Value);
-                buildDiv(slider, imdbScore, rtScore);
-            } 
-            catch(err){
-                let imdbScore = "N/A"
-                let rtScore = "N/A"
-                buildDiv(slider, imdbScore, rtScore);
+                var movieTitle = slider.getElementsByClassName("fallback-text")[0].innerText;
+                var movieTitleFormatted = formatTitle(movieTitle);
+                if(parentNodeChecker(slider) == true){
+                    let fetchedData = await fetchRequest(movieTitleFormatted);
+                    try{
+                        let imdbScore = imdbFormating(fetchedData.Ratings[0].Value);
+                        let rtScore = rtFormating(fetchedData.Ratings[1].Value);
+                        buildDiv(slider, imdbScore, rtScore);
+                    } 
+                    catch(err){
+                        let imdbScore = "N/A"
+                        let rtScore = "N/A"
+                        buildDiv(slider, imdbScore, rtScore);
+                    }
+                }
             }
-        }
-        catch(err){
-            continue;
-        }
-        if (clicks > 0){
-            scoreFinder();
+            catch(err){
+                continue
+            }
         }
     }
 }
-
-
+scrollChecker();
 
 // Check for clicks on sliding elements
-//function pageChecker(){
-//    document.addEventListener('click', function(){
-//        console.log('Click Detected')
-//        scoreFinder();
-//    });
-//    document.addEventListener('scroll', function(){
-//        console.log('Scroll Detected')
-//        scoreFinder();
-//    });
-//}
+function scrollChecker(){
+    document.addEventListener('scroll', function(){
+        console.log('Scroll Detected')
+        scoreFinder();
+    });
+}
 
 
 // Check for repeated title cards and omit ones with a progress bar
