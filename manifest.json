@@ -7,15 +7,13 @@
     "images/score_puppy_cropped.png",
     "images/imdb_logo_color.png",
     "images/arfy.png",
-    "images/rt_logo_color.png",
-    "css/style.css",
-    "css/popup.css"
+    "images/rt_logo_color.png"
 ],
 "background": {
     "scripts": ["js/background.js"]
 },
 "browser_action" : { 
-    "default_popup" : "html/popup.html",
+    "default_popup" : "popup.html",
     "default_icon" : "images/arfy.png"
 },
 "permissions": [
