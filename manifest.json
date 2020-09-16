@@ -6,16 +6,16 @@
 "web_accessible_resources" : [
     "images/score_puppy_cropped.png",
     "images/imdb_logo_color.png",
-    "images/rt_logo_bw.png",
     "images/arfy.png",
-    "images/imdb_logo_bw.png",
     "images/rt_logo_color.png",
-    "css/style.css"
+    "css/style.css",
+    "css/popup.css"
 ],
 "background": {
     "scripts": ["js/background.js"]
 },
 "browser_action" : { 
+    "default_popup" : "html/popup.html",
     "default_icon" : "images/arfy.png"
 },
 "permissions": [
