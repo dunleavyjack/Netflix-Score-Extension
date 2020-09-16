@@ -33,6 +33,7 @@ async function scoreFinder(){
 }
 scrollChecker();
 
+
 // Check for clicks on sliding elements
 function scrollChecker(){
     document.addEventListener('scroll', function(){
