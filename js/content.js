@@ -1,4 +1,4 @@
-console.log('Score Puppy is ready. Woof!'); 
+console.log('Score Puppy is ready to go. Woof!'); 
 chrome.runtime.onMessage.addListener(scoreFinder);
 
 // Main function for handeling all title cards on Netflix homepage
