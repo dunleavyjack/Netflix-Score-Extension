@@ -1,4 +1,4 @@
-console.log('Ready to find scores!'); 
+console.log('Score Puppy is ready. Woof!'); 
 chrome.runtime.onMessage.addListener(scoreFinder);
 
 // Main function for handeling all title cards on Netflix homepage
@@ -31,16 +31,7 @@ async function scoreFinder(){
         }
     }
 }
-scrollChecker();
 
-
-// Check for clicks on sliding elements
-function scrollChecker(){
-    document.addEventListener('scroll', function(){
-        console.log('Scroll Detected')
-        scoreFinder();
-    });
-}
 
 
 // Check for repeated title cards and omit ones with a progress bar
