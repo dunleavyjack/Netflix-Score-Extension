@@ -30,8 +30,17 @@ async function scoreFinder(){
             }
         }
     }
+    finalCheck(totalTitleCards);
 }
 
+
+// Check for added sliders as user scrolls down
+function finalCheck(allCards){
+    var allAddedDivs = document.querySelectorAll("#score-presentation")
+    if(allAddedDivs.length != allCards.length){
+        scoreFinder;
+    }
+}
 
 
 // Check for repeated title cards and omit ones with a progress bar
