@@ -1,10 +1,9 @@
 {
 "manifest_version": 2,
-"name": "Score Puppy",
-"version": "1.1",
-"description": "IMDb and Rotten Tomatoes scores added right to your Netflix. Woof.",
+"name": "Score Dog",
+"version": "1.2",
+"description": "IMDb and Rotten Tomatoes scores added to your Netflix. Woof.",
 "web_accessible_resources" : [
-    "images/score_puppy_cropped.png",
     "images/imdb_logo_color.png",
     "images/arfy.png",
     "images/rt_logo_color.png"
