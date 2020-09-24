@@ -3,42 +3,35 @@ chrome.runtime.onMessage.addListener(scoreFinder);
 
 // Main function for handeling all title cards on Netflix homepage
 async function scoreFinder(){
-    var totalTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
-    for(var i = 0; i <= totalTitleCards.length; i++){
-        for(var j = 0; j<=i; j++){
-            var presentTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
-            var slider = presentTitleCards[j]
-            try{
-                var movieTitle = slider.getElementsByClassName("fallback-text")[0].innerText;
-                var movieTitleFormatted = formatTitle(movieTitle);
-                if(parentNodeChecker(slider) == true){
-                    let fetchedData = await fetchRequest(movieTitleFormatted);
-                    try{
-                        let imdbScore = imdbFormating(fetchedData.Ratings[0].Value);
-                        let rtScore = rtFormating(fetchedData.Ratings[1].Value);
-                        buildDiv(slider, imdbScore, rtScore);
-                    } 
-                    catch(err){
-                        let imdbScore = "N/A"
-                        let rtScore = "N/A"
-                        buildDiv(slider, imdbScore, rtScore);
+    var atNetflix = true;
+    while(atNetflix){
+        var totalTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
+        for(var i = 0; i <= totalTitleCards.length; i++){
+            for(var j = 0; j<=i; j++){
+                var presentTitleCards = document.querySelectorAll(".slider-item-0,.slider-item-1,.slider-item-2,.slider-item-3,.slider-item-4,.slider-item-5,.slider-item-6,.slider-item-7");
+                var slider = presentTitleCards[j]
+                try{
+                    var movieTitle = slider.getElementsByClassName("fallback-text")[0].innerText;
+                    var movieTitleFormatted = formatTitle(movieTitle);
+                    if(parentNodeChecker(slider) == true){
+                        let fetchedData = await fetchRequest(movieTitleFormatted);
+                        try{
+                            let imdbScore = imdbFormating(fetchedData.Ratings[0].Value);
+                            let rtScore = rtFormating(fetchedData.Ratings[1].Value);
+                            buildDiv(slider, imdbScore, rtScore);
+                        } 
+                        catch(err){
+                            let imdbScore = "N/A"
+                            let rtScore = "N/A"
+                            buildDiv(slider, imdbScore, rtScore);
+                        }
                     }
                 }
-            }
-            catch(err){
-                continue
+                catch(err){
+                    continue
+                }
             }
         }
-    }
-    finalCheck(totalTitleCards);
-}
-
-
-// Check for added sliders as user scrolls down
-function finalCheck(allCards){
-    var allAddedDivs = document.querySelectorAll("#score-presentation")
-    if(allAddedDivs.length != allCards.length){
-        scoreFinder;
     }
 }
 
